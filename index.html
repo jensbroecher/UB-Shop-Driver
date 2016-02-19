@@ -60,7 +60,7 @@ function relocateme() {
 		
 // lang checker
 var language = localStorage.getItem("language");
-if (language == "lang_kinyarwanda") {
+if (language == "lang_french") {
 localStorage.setItem("toast","Gihwitse: "+crd.accuracy+"m.");toast();
 }
 if (language == "lang_english") {
@@ -173,12 +173,12 @@ if("request_accepted" in localStorage){
     
 
     
-$.get( "http://250taxi.com/db/partner/check_app_update.php?check=driver",  function( data ) {
+$.get( "http://enunua.com/ubdream/check_app_update.php?check=driver",  function( data ) {
     var currentversion = "1";
     var serverversion = data;
     if (currentversion < serverversion) {
         alert("Your app is outdated. Please install the update.");
-        window.open('http://250taxi.com/getupdate/driver.php', '_system');
+        window.open('http://ubdream.com/getupdate/driver.php', '_system');
     }
 });
     
@@ -225,14 +225,14 @@ var i;
 for (i = 0; i < x.length; i++) {
     x[i].className = "english lang_show";
 }
-var x = document.getElementsByClassName("rwanda");
+var x = document.getElementsByClassName("french");
 var i;
 for (i = 0; i < x.length; i++) {
-    x[i].className = "rwanda lang_show";
+    x[i].className = "french lang_show";
 }
 
-if(lang == 'lang_kinyarwanda') {
-	$(".rwanda").removeClass("lang_show");
+if(lang == 'lang_french') {
+	$(".french").removeClass("lang_show");
 }
 if(lang == 'lang_english') {
 	$(".english").removeClass("lang_show");
@@ -261,10 +261,10 @@ $( "#language_type" ).change(function() {
         document.getElementById("select_language").style.display = "none";
         }, 3500);
     }
-    if (language_type == "lang_kinyarwanda") {
+    if (language_type == "lang_french") {
         checklang();
-        localStorage.setItem('toast','Kinyarwanda');toast();
-        document.getElementById("language_flag").src = "img/rw.png";
+        localStorage.setItem('toast','Français');toast();
+        document.getElementById("language_flag").src = "img/fr.png";
         setTimeout(function(){
         document.getElementById("select_language").className = "animated zoomOut";
         }, 2000);
@@ -328,7 +328,7 @@ Call Passenger<br>
     <select id="language_type" required="" aria-required="true">
         <option value="" disabled selected>LANGUAGE</option>
         <option value="lang_english">ENGLISH</option>
-        <option value="lang_kinyarwanda">KINYARWANDA</option>
+        <option value="lang_french">FRENCH</option>
     </select>
 </div>
 </div>
@@ -348,29 +348,18 @@ Call Passenger<br>
 <svg style="width:24px;height:24px;vertical-align:middle;" viewBox="0 0 24 24">
     <path fill="#FFFFFF" d="M10,17.25V14H3V10H10V6.75L15.25,12L10,17.25M8,2H17A2,2 0 0,1 19,4V20A2,2 0 0,1 17,22H8A2,2 0 0,1 6,20V16H8V20H17V4H8V8H6V4A2,2 0 0,1 8,2Z" />
 </svg>    
-    Partner-Login
+    Login
 </a></span>
     
-<span class="lang_show rwanda">
- <a id="login_btn_rwanda" class="waves-effect waves-light btn_rwanda taxi250">   
+<span class="lang_show french">
+ <a id="login_btn_french" class="waves-effect waves-light btn_french taxi250">   
    <svg style="width:24px;height:24px;vertical-align:middle;" viewBox="0 0 24 24">
     <path fill="#FFFFFF" d="M10,17.25V14H3V10H10V6.75L15.25,12L10,17.25M8,2H17A2,2 0 0,1 19,4V20A2,2 0 0,1 17,22H8A2,2 0 0,1 6,20V16H8V20H17V4H8V8H6V4A2,2 0 0,1 8,2Z" />
-</svg> KWINJIRA KWABAFATANYABIKORWA
+</svg> S'identifier
 </a>
 </span>
 
-<br><br>
-<a id="login_btn_register" class="waves-effect waves-light btn taxi250">
-    
-<svg style="width:24px;height:24px;vertical-align:middle;" viewBox="0 0 24 24">
-    <path fill="#FFFFFF" d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M15,18V16H6V18H15M18,14V12H6V14H18Z" />
-</svg>
-    
-    
-    <span class="lang_show english">Register</span>
-    <span class="lang_show rwanda">IYANDIKISHE</span>
-    
-    </a>
+
 <br><br>
 <span style="display:none;">
 <a href="qr/index.html" class="waves-effect waves-dark btn white grey-text">QR Test</a>
@@ -380,13 +369,7 @@ Call Passenger<br>
     <path fill="#FFFFFF" d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
 </svg> Language
 </a> 
-<br><br>
-<a id="login_btn_corporate" class="waves-effect waves-dark btn white grey-text">
-    
-    <span class="lang_show english">Hotel / Corporate</span>
-    <span class="lang_show rwanda">AMAHOTELI / IBIGO</span>
-    
-</a>
+
 
 
 </div>
@@ -407,8 +390,8 @@ Call Passenger<br>
           
 <div class="input-field col s12">
     <select id="partner_type" required="" aria-required="true">
-      <option value="" disabled>PARTNER TYPE</option>
-      <option selected value="TX_">TAXI</option>
+      <option value="" disabled>TYPE</option>
+      <option selected value="DR_">DRIVER</option>
     </select>
 </div>
             
@@ -417,7 +400,7 @@ Call Passenger<br>
           <label for="id_no">
 			  
 	<span class="lang_show english">User ID</span>
-    <span class="lang_show rwanda">Ikimuranga</span>
+    <span class="lang_show french">Identifiant d'utilisateur</span>
 			  
 			  </label>
 </div>
@@ -425,7 +408,7 @@ Call Passenger<br>
 <a id="login_btn_go" class="waves-effect waves-light btn taxi250">
 	
 	<span class="lang_show english">Login</span>
-    <span class="lang_show rwanda">Injira</span>
+    <span class="lang_show french">S'identifier</span>
 	
 	</a>
             
@@ -442,7 +425,7 @@ Call Passenger<br>
           <a id="login_btn_qr" class="waves-effect waves-light btn taxi250" onclick="scancode();"> 
 			  
 	<span class="lang_show english">Scan ID</span>
-    <span class="lang_show rwanda">Scan ID</span>
+    <span class="lang_show french">Scan ID</span>
 			  
 			  </a>  
         </div>
@@ -455,7 +438,7 @@ Call Passenger<br>
     
 <style>
 #radar, #radar_offline {
-    background-color: black;
+    background-color: #2472C4;
     width: 100%;
     color: white;
 }
@@ -495,8 +478,8 @@ Call Passenger<br>
     <img src="img/220.gif" style="width:60%;max-width:300px;"><br>
         
 
-<span class="lang_show english">Waiting for passengers...<br>You are visible!</span>
-<span class="lang_show rwanda">UTEGEREJE ABAGENZI<br>URAGARAGARA</span>
+<span class="lang_show english">Waiting...<br>You are visible!</span>
+<span class="lang_show french">Attendre...<br>Vous êtes visible!</span>
         
         
         
@@ -509,8 +492,8 @@ Call Passenger<br>
     <div id="radar_offline" style="display:none;"><br>
     <img src="img/offline.png" style="width:60%;max-width:300px;"><br>
         
-<span class="lang_show english">You aren't visible.<br>Passengers can't find you!</span>
-<span class="lang_show rwanda">UTEGEREJE ABAGENZI<br>NTUGARAGARA</span>       
+<span class="lang_show english">You aren't visible.</span>
+<span class="lang_show french">Vous n'êtes pas visible.</span>       
         
         <br><br>
     <div id="behind_radar_offline"></div>
@@ -521,11 +504,11 @@ Call Passenger<br>
 <img style="width: 40px; height: 40px; padding: 5px; float: left;" src="img/information-outline.svg">
         
 <span class="lang_show english">KEEP APP OPEN FOR BEST PERFORMANCE.</span>
-<span class="lang_show rwanda">IYI APILIKASIYO IGOMBA GUHORA IFUNGUYE KUGIRA NGO IKORE NEZA.</span>
+<span class="lang_show french">GARDER APP OUVERT POUR DE MEILLEURES PERFORMANCES.</span>
         
 <div id="accuracy_standby">
 <span class="lang_show english">ACCURACY: </span>
-<span class="lang_show rwanda">GIHWITSE: </span>
+<span class="lang_show french">EXACTITUDE: </span>
 <span id="accuracy_standby_meters"></span>m. <span id="last_standby_server_update"></span>
 </div>
     
@@ -641,7 +624,7 @@ if (ja_client_instructions_length < 1) {
 
 // lang checker
 var language = localStorage.getItem("language");
-if (language == "lang_kinyarwanda") {
+if (language == "lang_french") {
 document.getElementById("ja_client_instructions").innerHTML = "Ntabyatanzwe";  
 }
 if (language == "lang_english") {
@@ -664,7 +647,7 @@ if (loggedin == 'Yes') {
     id_no = localStorage.getItem("id_no");
 }
 
-    $.get( "http://250taxi.com/db/partner/taxi_comlink.php?id_no="+id_no+"&status="+status+"&latitude="+latitude+"&longitude="+longitude+"&accuracy="+accuracy+"&speed="+speed+"&altitude="+altitude+"", function( data ) {
+    $.get( "http://enunua.com/ubdream/db/driver/comlink.php?id_no="+id_no+"&status="+status+"&latitude="+latitude+"&longitude="+longitude+"&accuracy="+accuracy+"&speed="+speed+"&altitude="+altitude+"", function( data ) {
         
 // console.log(data);
 
@@ -838,7 +821,7 @@ console.log("Dialog nicht zeigen!!");
 	 
 // lang checker
 var language = localStorage.getItem("language");
-if (language == "lang_kinyarwanda") {
+if (language == "lang_french") {
 localStorage.setItem('toast','Gufata umugenzi byemejwe.');toast();
 }
 if (language == "lang_english") {
@@ -865,8 +848,8 @@ checkJourneyStatus();
         <div class="card-panel white">
           <span class="black-text">
               
-<span class="lang_show english">Choose if you are visible to passengers</span>
-<span class="lang_show rwanda">HITAMO NIBA UGARAGARA KUBA GENZI</span>   
+<span class="lang_show english">Choose if you are active</span>
+<span class="lang_show french">Choisissez si vous êtes actif</span>   
               
 <br><br>
     <!-- Switch -->
@@ -874,7 +857,7 @@ checkJourneyStatus();
     <label>
         
         <span class="lang_show english">Hidden</span>
-<span class="lang_show rwanda">NTUGARAGARA</span>
+<span class="lang_show french">Caché</span>
         
       
         
@@ -884,22 +867,22 @@ checkJourneyStatus();
       
         
             <span class="lang_show english">Visible</span>
-<span class="lang_show rwanda">URAGARAGARA</span>
+<span class="lang_show french">Visible</span>
         
     </label>
   </div>
     <br>
               
-<span class="lang_show english">Play a sound when a passenger calls you</span>
-<span class="lang_show rwanda">GUKINA UMUZIKI UMUGENZIAHAMAGAYE</span>            
+<span class="lang_show english">Play sound</span>
+<span class="lang_show french">Jouer son</span>            
               
 
 <br><br>
     <input type="checkbox" class="filled-in" id="play_choice_checkbox" checked="checked" />
     <label for="play_choice_checkbox">
 		
-	<span class="lang_show english">Play <i>Hey Taxi</i></span>
-	<span class="lang_show rwanda">Kina <i>Hey Taxi</i></span>		  
+	<span class="lang_show english">Play</span>
+	<span class="lang_show french">Jouer</span>		  
 		
 	</label>
               
@@ -918,7 +901,7 @@ checkJourneyStatus();
 </svg> 
 
 <span class="lang_show english">Logout</span>
-<span class="lang_show rwanda">SOHOKAMO</span>
+<span class="lang_show french">Se déconnecter</span>
  
 <span id="driver_name"></span></a>
     
@@ -929,7 +912,7 @@ showindicator();
 
 // lang checker
 var language = localStorage.getItem("language");
-if (language == "lang_kinyarwanda") {
+if (language == "lang_french") {
 var logout_confirm_text = "Urumva ushaka gusohoka?";
 }
 if (language == "lang_english") {
@@ -974,14 +957,14 @@ if (logout_confirm == true) {
 <div id="journeyrequest">
            
 <div id="journeyrequest_header">
-<span class="lang_show english">Journey Request</span>
-<span class="lang_show rwanda">SABA URUGENDO</span>
+<span class="lang_show english">Request</span>
+<span class="lang_show french">Demande</span>
 </div>
                 
 <div id="journeyrequest_passenger_name"></div>
                 
 <span class="lang_show english">Distance: </span>
-<span class="lang_show rwanda">AHO UFATIRA UMUGENZI: </span>
+<span class="lang_show french">AHO UFATIRA UMUGENZI: </span>
                 
 <span id="driver_client_distance"></span> km
 	
@@ -995,7 +978,7 @@ if (logout_confirm == true) {
 </svg>
 <span style="color:#008000;">
 <span class="lang_show english">Accept</span>
-<span class="lang_show rwanda">EMEZA</span>
+<span class="lang_show french">EMEZA</span>
 </span>
 </a>
 <a onclick="request_decline();" href="#">
@@ -1005,7 +988,7 @@ if (logout_confirm == true) {
 </svg>
 <span style="color:#FF0000;">
 <span class="lang_show english">Decline</span>
-<span class="lang_show rwanda">HAKANA</span>
+<span class="lang_show french">HAKANA</span>
 </span>
 </a>
 </div>
@@ -1066,7 +1049,7 @@ function request_decline() {
 	
 // lang checker
 var language = localStorage.getItem("language");
-if (language == "lang_kinyarwanda") {
+if (language == "lang_french") {
 var request_decline_text = "Mwashishoje neza mushaka guhakana ubu busabe?\n\nNyabuneka mukore ibi aruko mutari kubona uwo mugenzi cyangwa habaye harikibazo mugukoresha iyi apulikasiyo. Umugenzi arahita amenyeshwa ko mwanze ubusabe bwe bwo gutwarwa.";
 }
 if (language == "lang_english") {
@@ -1132,12 +1115,12 @@ cordova.plugins.notification.local.schedule({
         <span style="display:none;">Client Location: <span id="ja_client_location">Loading...</span></span>
                 
 <span class="lang_show english">ADDITIONAL INSTRUCTIONS:</span>
-<span class="lang_show rwanda">IBISOBANURO BIHAGIJE KU HANTU AGIYE:</span>
+<span class="lang_show french">IBISOBANURO BIHAGIJE KU HANTU AGIYE:</span>
 				
 <span id="ja_client_instructions">			 
 			 
 <span class="lang_show english">Not given</span>
-<span class="lang_show rwanda">Ntabyatanzwe</span>
+<span class="lang_show french">Ntabyatanzwe</span>
 			 
 </span>		
 				
@@ -1145,7 +1128,7 @@ cordova.plugins.notification.local.schedule({
         <span>
 			
 <span class="lang_show english">DESTINATION:</span>
-<span class="lang_show rwanda">AHO UMUKIRIYA AGIYE:</span>
+<span class="lang_show french">AHO UMUKIRIYA AGIYE:</span>
 			
 			 <span id="ja_client_destination">Loading...</span>
 				
@@ -1162,7 +1145,7 @@ cordova.plugins.notification.local.schedule({
 </svg> 
 	
 <span class="lang_show english">Picked up</span>
-<span class="lang_show rwanda">yafashwe</span>
+<span class="lang_show french">yafashwe</span>
 	
 	</div>
               
@@ -1178,7 +1161,7 @@ cordova.plugins.notification.local.schedule({
 <path fill="#FFFFFF" d="M4,3A1,1 0 0,0 3,4A17,17 0 0,0 20,21A1,1 0 0,0 21,20V16.5A1,1 0 0,0 20,15.5C18.75,15.5 17.55,15.3 16.43,14.93C16.08,14.82 15.69,14.9 15.41,15.17L13.21,17.37C10.38,15.93 8.06,13.62 6.62,10.78L8.82,8.57C9.1,8.31 9.18,7.92 9.07,7.57C8.7,6.45 8.5,5.25 8.5,4A1,1 0 0,0 7.5,3H4M15,3V4.5H18.5L13,10L14,11L19.5,5.5V9H21V3H15Z" />
 </svg> 
 <span class="lang_show english">Call</span>
-<span class="lang_show rwanda">HAMAGARA</span>            
+<span class="lang_show french">HAMAGARA</span>            
 </div></a></span>
                 
                 
@@ -1187,7 +1170,7 @@ cordova.plugins.notification.local.schedule({
     <path fill="#FFFFFF" d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4A2,2 0 0,0 20,2M6,9H18V11H6M14,14H6V12H14M18,8H6V6H18" />
 </svg>   
 <span class="lang_show english">Chat</span>
-<span class="lang_show rwanda">UBUTUMWA BUGUFI</span>
+<span class="lang_show french">UBUTUMWA BUGUFI</span>
 </div>
                 
 <div style="display:none;" onclick="request_decline();" class="waves-effect waves-light btn red">   
@@ -1205,7 +1188,7 @@ Cancel
 </svg> 
 	
 <span class="lang_show english">Navigation</span>
-<span class="lang_show rwanda">Shakisha</span>
+<span class="lang_show french">Shakisha</span>
 	
 	
 			  
@@ -1233,7 +1216,7 @@ Cancel
 
 
 <span class="lang_show english">Driven Kilometers (Estimate):</span>
-<span class="lang_show rwanda">Ibirometero byakoreshejwe (Gereranya):</span>
+<span class="lang_show french">Ibirometero byakoreshejwe (Gereranya):</span>
 	
 <span id="journey_fare_display_km_count">0</span>km
 </div>
@@ -1244,7 +1227,7 @@ Fare: <span id="journey_fare_display_fare_count">1500</span> RWF
 
 	
 <span class="lang_show english">Destination:</span>
-<span class="lang_show rwanda">Aho agiye:</span>	
+<span class="lang_show french">Aho agiye:</span>	
  
 <span id="journey_fare_display_destination_target"></span>
 </div>
@@ -1252,7 +1235,7 @@ Fare: <span id="journey_fare_display_fare_count">1500</span> RWF
 <div id="stopwatch_elapsed_time">
 	
 <span class="lang_show english">Elapsed time:</span>
-<span class="lang_show rwanda">Igihe cyakoreshejwe:</span>	
+<span class="lang_show french">Igihe cyakoreshejwe:</span>	
 
 	
 	
@@ -1268,7 +1251,7 @@ Fare: <span id="journey_fare_display_fare_count">1500</span> RWF
 </svg> 
 	
 <span class="lang_show english">End Journey</span>
-<span class="lang_show rwanda">Yagezeyo</span>	
+<span class="lang_show french">Yagezeyo</span>	
 	
 </div>
 
@@ -1356,7 +1339,7 @@ body {
 </svg>  
         
 <span class="lang_show english">Hotel Account</span>
-<span class="lang_show rwanda">AMAHOTELI</span>
+<span class="lang_show french">AMAHOTELI</span>
         
         
     
@@ -1369,7 +1352,7 @@ body {
 </svg> 
         
         <span class="lang_show english">Corporate Account</span>
-<span class="lang_show rwanda">IBIGO</span>
+<span class="lang_show french">IBIGO</span>
         </div>
     
     <div style="padding: 5px; background-color: lightgrey;">

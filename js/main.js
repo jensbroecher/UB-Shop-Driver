@@ -16,7 +16,7 @@ $(document).ready(function () {
         wasloggedin();
     }
 
-    $("#login_btn, #login_btn_rwanda").click(function () {
+    $("#login_btn, #login_btn_french").click(function () {
 
         $("#view_start").fadeOut("slow", function () {
             $("#view_login").fadeIn("slow", function () {
@@ -25,14 +25,9 @@ $(document).ready(function () {
         });
     });
 
-    $("#login_btn_register").click(function () {
-        alert('Please register on our mobile website.');
-        window.open('http://250taxi.com', '_system');
-    });
 
-    $("#login_btn_corporate").click(function () {
-        corporate_login();
-    });
+
+
 
     $(document).on('submit', '#login_form', function (e) {
         //prevent the form from doing a submit
@@ -69,9 +64,9 @@ function login_form_go() {
     id_no = document.getElementById('id_no').value;
     // pin = document.getElementById('pin').value;
 
-    if (partner_type == "TX_") {
+    if (partner_type == "DR_") {
 
-        $.get("http://250taxi.com/db/partner/taxi_id_check_if_exists.php?id_no=" + id_no + "", function (data) {
+        $.get("http://enunua.com/ubdream/db/driver/id_check_if_exists.php?id_no=" + id_no + "", function (data) {
 
             if (data == "account_found") {
                 check_login();
@@ -151,11 +146,11 @@ function check_login_from_card() {
 
         localStorage.setItem("id_no", id_no);
 
-        $.get("http://250taxi.com/db/partner/taxi_id_get_name.php?id_no=" + id_no + "", function (data) {
+        $.get("http://enunua.com/ubdream/db/driver/id_get_name.php?id_no=" + id_no + "", function (data) {
 
             localStorage.setItem("driver_name", data);
 
-            $.get("http://250taxi.com/db/partner/taxi_id_get_driverid.php?id_no=" + id_no + "", function (driverid) {
+            $.get("http://enunua.com/ubdream/db/driver/id_get_driverid.php?id_no=" + id_no + "", function (driverid) {
                 localStorage.setItem("driverid", driverid);
                 localStorage.setItem("loggedin", "Yes");
             });
@@ -187,13 +182,13 @@ function check_login_from_card() {
 
 function check_login() {
 
-    if (partner_type == "TX_") {
+    if (partner_type == "DR_") {
 
         // alert(id_no);
 
         localStorage.setItem("id_no", id_no);
 
-        $.get("http://250taxi.com/db/partner/taxi_id_get_name.php?id_no=" + id_no + "", function (data) {
+        $.get("http://enunua.com/ubdream/db/driver/id_get_name.php?id_no=" + id_no + "", function (data) {
 
             localStorage.setItem("driver_name", data);
 
@@ -209,14 +204,14 @@ function check_login() {
 				
 				// lang checker
 var language = localStorage.getItem("language");
-if (language == "lang_kinyarwanda") {
-	login_from_qr_pin_text = "Andika umubare w’ibanga:"
+if (language == "lang_french") {
+	login_from_qr_pin_text = "S'il vous plaît entrer votre code PIN:"
 }
 if (language == "lang_english") {
 	login_from_qr_pin_text = "Please enter your PIN:"
 }		
 
-                var login_from_qr_pin = prompt("Amakuru, " + data + ".\n"+login_from_qr_pin_text+"", "");
+                var login_from_qr_pin = prompt("Bienvenue, " + data + ".\n"+login_from_qr_pin_text+"", "");
                 pin = login_from_qr_pin;
 
                 if (login_from_qr_pin === "") {
@@ -226,7 +221,7 @@ if (language == "lang_english") {
 
                     // alert(pin);
 
-                    $.get("http://250taxi.com/db/partner/taxi_id_check_pin.php?id_no=" + id_no + "&pin=" + pin + "", function (data) {
+                    $.get("http://enunua.com/ubdream/db/driver/id_check_pin.php?id_no=" + id_no + "&pin=" + pin + "", function (data) {
 
                         // alert(data);
 
@@ -234,7 +229,7 @@ if (language == "lang_english") {
 
                             responsiveVoice.speak("PIN Correct!", "UK English Male");
 
-                            $.get("http://250taxi.com/db/partner/taxi_id_get_driverid.php?id_no=" + id_no + "", function (driverid) {
+                            $.get("http://enunua.com/db/driver/ubdream/id_get_driverid.php?id_no=" + id_no + "", function (driverid) {
                                 localStorage.setItem("driverid", driverid);
                                 localStorage.setItem("loggedin", "Yes");
                             });
