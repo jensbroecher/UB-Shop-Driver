@@ -142,7 +142,7 @@ function namefound() {
 
 function check_login_from_card() {
 
-    if (partner_type == "TX_") {
+    if (partner_type == "DR_") {
 
         localStorage.setItem("id_no", id_no);
 
@@ -175,7 +175,7 @@ function check_login_from_card() {
 
 
     } else {
-        alert('Account type not supported yet.');
+        alert('Problem with QR-Code. Please contact the office.');
     }
 
 }
