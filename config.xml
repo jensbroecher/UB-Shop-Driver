@@ -19,10 +19,10 @@
 	
 	<icon src="icon.png" />
 		
-	<preference name="exit-on-suspend" value="false" />
-	<preference name="KeepRunning" value="true" />
-		
+	<platform name="android" />
+
 	<!-- Core plugins -->
+	<gap:plugin name="cordova-plugin-statusbar" source="npm" />
     <gap:plugin name="cordova-plugin-device" source="npm" />
     <gap:plugin name="cordova-plugin-device-orientation" source="npm" />
     <gap:plugin name="cordova-plugin-dialogs" source="npm" />
@@ -32,16 +32,11 @@
     <gap:plugin name="cordova-plugin-inappbrowser" source="npm" />
     <gap:plugin name="cordova-plugin-media" source="npm" />
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
-	<gap:plugin name="cordova-plugin-vibration" source="npm" />
-        
-    <gap:plugin name="cordova-plugin-brightness" source="npm" />
-    
+
     <gap:plugin name="cordova-plugin-screen-orientation" source="npm" />
-
-    <gap:plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" source="npm" />
-        
+    <gap:plugin name="cordova-plugin-fastrde-checkgps" source="npm" />
     <gap:plugin name="cordova-plugin-barcodescanner" source="npm" />
-
+        
     <gap:plugin name="onesignal-cordova-plugin-pgb-compat" source="npm" />
     <gap:plugin name="cordova-plugin-googleplayservices" source="npm" />
     <gap:plugin name="cordova-plugin-android-support-v4" source="npm" />
