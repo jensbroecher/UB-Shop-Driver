@@ -136,6 +136,8 @@ function recover_request_accepted() {
 
 $(document).ready(function() {
     
+localStorage.setItem("language","lang_french");
+    
 getLocationUpdate();
     
 // Resets
@@ -341,15 +343,24 @@ Call Passenger<br>
     
     
 <div id="view_start">
+
 <img id="logo" src="icon.png">
-<br><br>
+<br>    
+v1.0
+
+    
+<div id="login_btn_holder">
+
 <span class="lang_show english">
+
 <a id="login_btn" class="waves-effect waves-light btn taxi250">
 <svg style="width:24px;height:24px;vertical-align:middle;" viewBox="0 0 24 24">
     <path fill="#FFFFFF" d="M10,17.25V14H3V10H10V6.75L15.25,12L10,17.25M8,2H17A2,2 0 0,1 19,4V20A2,2 0 0,1 17,22H8A2,2 0 0,1 6,20V16H8V20H17V4H8V8H6V4A2,2 0 0,1 8,2Z" />
 </svg>    
     Login
-</a></span>
+</a>
+  
+</span>
     
 <span class="lang_show french">
  <a id="login_btn_french" class="waves-effect waves-light btn_french taxi250">   
@@ -359,16 +370,21 @@ Call Passenger<br>
 </a>
 </span>
 
+</div>
 
 <br><br>
+
 <span style="display:none;">
 <a href="qr/index.html" class="waves-effect waves-dark btn white grey-text">QR Test</a>
 </span>
+
+<span style="display:none;">
 <a onclick="show_language_picker();" id="login_btn_language" class="waves-effect waves-light btn taxi250">
    <svg style="width:24px;height:24px;vertical-align: middle;" viewBox="0 0 24 24">
     <path fill="#FFFFFF" d="M17.9,17.39C17.64,16.59 16.89,16 16,16H15V13A1,1 0 0,0 14,12H8V10H10A1,1 0 0,0 11,9V7H13A2,2 0 0,0 15,5V4.59C17.93,5.77 20,8.64 20,12C20,14.08 19.2,15.97 17.9,17.39M11,19.93C7.05,19.44 4,16.08 4,12C4,11.38 4.08,10.78 4.21,10.21L9,15V16A2,2 0 0,0 11,18M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
 </svg> Language
-</a> 
+</a>
+</span>
 
 
 
@@ -418,7 +434,7 @@ Call Passenger<br>
     
     </form>
     
-<div class="row">
+<div class="row" style="display: none;">
       <div class="col s12">
         <div class="card-panel white">
         <img id="scan_qr" src="img/scan_qr.png">
@@ -452,8 +468,6 @@ Call Passenger<br>
     padding: 5px;
 }
 #loadingindicator {
-    filter: invert(100%);
-    -webkit-filter: invert(100%);
 	background-color: #E2E2E2;
 	position: absolute;
 	z-index: 100;
