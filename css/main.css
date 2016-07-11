@@ -37,6 +37,12 @@ body {
     background-size: cover;
     background-position: center bottom;
 }
+#login_form {
+    position: fixed;
+    text-align: center;
+    bottom: 20px;
+    bottom: 20px;
+}
 html, body, #map {
 			height: 100%;
             width: 100%;
@@ -88,6 +94,12 @@ html, body, #map {
 }
 
 #view_login {
+    background-image: url(../img/driver_photo.jpg);
+    background-size: auto 100%;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
     display: none;
     padding-top: 3px;
 }
@@ -285,3 +297,73 @@ html, body, #map {
 .chat_message_client .chat_arrow_left {
     display: none;
 }
+#loadingindicator {
+	background-color: #E2E2E2;
+	position: absolute;
+	z-index: 100;
+	height: 100%;
+	width: 100%;
+	left: 0px;
+	top: 0px;
+	text-align: center;
+}
+#loadingindicator img {
+	margin-top: 120px;
+	width: 100px;
+}
+
+
+
+
+#view_standby {
+
+}
+#view_standby_actionbar {
+    background-color: white;
+    height: 48px;
+    width: 100%;
+    box-shadow: 0 0 7px 0 rgba(0,0,0,0.6);
+    z-index: 100;
+    position: fixed;
+}
+#view_standby_actionbar #logout_button {
+    background-image: url(../img/logout.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: fixed;
+    width: 48px;
+    height: 48px;
+    right: 0px;
+    top: 0px;
+}
+#view_standby_actionbar #drivername {
+    line-height: 48px;
+    font-size: 16px;
+}
+#view_standby_content {
+
+}
+
+#missions {
+    padding-top: 70px;
+}
+
+#missions .mission_card {
+    width: 90%;
+    padding: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    box-shadow: 0 0 7px 0 rgba(0,0,0,0.6);
+    background-color: white;
+}
+#missions .mission_card_header {
+    font-weight: bold;
+    font-size: 130%;
+    margin-bottom: 10px;
+}
+
+
+
+
+

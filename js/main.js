@@ -7,12 +7,12 @@ function back_to_start() {
 }
 
 $(document).ready(function () {
+    
+    hideindicator();
 
     var loggedin = localStorage.getItem('loggedin');
 
     if (loggedin == 'Yes') {
-        var driver_name = localStorage.getItem("driver_name");
-        document.getElementById("driver_name").innerHTML = driver_name;
         wasloggedin();
     }
 
@@ -23,11 +23,8 @@ $(document).ready(function () {
 
             });
         });
+
     });
-
-
-
-
 
     $(document).on('submit', '#login_form', function (e) {
         //prevent the form from doing a submit
@@ -41,12 +38,14 @@ $(document).ready(function () {
         var $theForm = $(this).closest('form');
         //Some browsers don't implement checkValidity
         if ((typeof ($theForm[0].checkValidity) == "function") && !$theForm[0].checkValidity()) {
+
             localStorage.setItem('toast', 'Account not found. Please check your ID Number / Username.');
-			
-			document.getElementById("login_btn_go").className = "waves-effect waves-light btn taxi250";
-	document.getElementById("login_btn_go").style.pointerEvents = "all";
-			
             toast();
+
+            document.getElementById("login_btn_go").className = "waves-effect waves-light btn taxi250";
+
+            document.getElementById("login_btn_go").style.pointerEvents = "all";
+
             return;
         }
         login_form_go();
@@ -55,37 +54,99 @@ $(document).ready(function () {
 });
 
 function login_form_go() {
-	
-	// hide button to prevent double click
-	document.getElementById("login_btn_go").className = "waves-effect waves-light btn taxi250 disabled";
-	document.getElementById("login_btn_go").style.pointerEvents = "none";
 
-    partner_type = document.getElementById('partner_type').value;
-    id_no = document.getElementById('id_no').value;
-    // pin = document.getElementById('pin').value;
+    // hide button to prevent double click
+    document.getElementById("login_btn_go").className = "waves-effect waves-light btn taxi250 disabled";
+    document.getElementById("login_btn_go").style.pointerEvents = "none";
 
-    if (partner_type == "DR_") {
+    username = document.getElementById('username').value;
+    localStorage.setItem("username",username);
+    
+    password = document.getElementById('password').value;
+    localStorage.setItem("password",password);
 
-        $.get("http://enunua.com/ubdream/db/driver/id_check_if_exists.php?id_no=" + id_no + "", function (data) {
+    $.get("https://enunua.com/ubdream/db/driver/account.php?&task=start&username=" + username + "", function (data) {
 
-            if (data == "account_found") {
-                check_login();
-            }
-            if (data == "account_not_found") {
-                localStorage.setItem('toast', 'Account not found. Please try again.');
-				
-			document.getElementById("login_btn_go").className = "waves-effect waves-light btn taxi250";
-	document.getElementById("login_btn_go").style.pointerEvents = "all";
-				
-                toast();
-            }
+        if (data == "account_found") {
+            check_login();
+        }
+        if (data == "account_not_found") {
+
+            document.getElementById("login_btn_go").className = "waves-effect waves-light btn taxi250";
+            document.getElementById("login_btn_go").style.pointerEvents = "all";
+
+            localStorage.setItem('toast', 'Account not found. Please try again.');
+            toast();
+        }
+
+    });
+}
+
+function check_login() {
+
+    var username = localStorage.getItem("username");
+
+    $.get("https://enunua.com/ubdream/db/driver/account.php?task=get_name&username=" + username + "", function (data) {
+
+        localStorage.setItem("drivername", data);
+
+        $.get("https://enunua.com/ubdream/db/driver/account.php?task=get_id&username=" + username + "", function (data) {
+
+            localStorage.setItem("driverid", data);
+
+            check_password();
 
         });
-    } else {
-        localStorage.setItem('toast', 'Account type not supported yet.');
-        toast();
-    }
+
+    });
+
 }
+
+function check_password() {
+
+    driverid = localStorage.getItem("driverid");
+
+    $.get("https://enunua.com/ubdream/db/driver/account.php?task=check_password&password=" + password + "&driverid=" + driverid + "", function (data) {
+
+        if (data == "password_correct") {
+
+            localStorage.setItem("loggedin", "Yes");
+
+
+
+            $("#view_login").fadeOut("slow", function () {
+                
+                    $("#view_standby").fadeIn("slow", function () {
+                        
+                            update_start();
+                            update();
+                    
+                            myVar = setInterval(function () {
+                                myTimer();
+                            }, 5000);
+                                    
+                });
+                
+            });
+
+        }
+        if (data == "password_incorrect") {
+
+            alert("Mot de passe incorrect.");
+            document.getElementById("login_btn_go").className = "waves-effect waves-light btn taxi250";
+            document.getElementById("login_btn_go").style.pointerEvents = "all";
+
+        }
+
+
+
+    });
+
+}
+
+
+
+
 
 
 
@@ -115,8 +176,8 @@ function scancode() {
                 namefound();
             }
 
-        },
-        function (error) {
+        }
+        , function (error) {
             alert("Scanning failed: " + error);
         }
     );
@@ -140,147 +201,56 @@ function namefound() {
 
 }
 
-function check_login_from_card() {
-
-    if (partner_type == "DR_") {
-
-        localStorage.setItem("id_no", id_no);
-
-        $.get("http://enunua.com/ubdream/db/driver/id_get_name.php?id_no=" + id_no + "", function (data) {
-
-            localStorage.setItem("driver_name", data);
-
-            $.get("http://enunua.com/ubdream/db/driver/id_get_driverid.php?id_no=" + id_no + "", function (driverid) {
-                localStorage.setItem("driverid", driverid);
-                localStorage.setItem("loggedin", "Yes");
-            });
-
-            var driver_name = localStorage.getItem("driver_name");
-            document.getElementById("driver_name").innerHTML = driver_name;
-
-            $("#view_login").fadeOut("slow", function () {
-                $("#view_taxi_waiting").fadeIn("slow", function () {
-                    myVar = setInterval(function () {
-                        // console.log("Start myTimer");
-                        myTimer();
-                    }, 6000);
-                    localStorage.setItem('toast', 'Login successful!');
-                    toast();
-                    responsiveVoice.speak("Welcome!", "UK English Male");
-                });
-            });
-
-        });
 
 
 
-    } else {
-        alert('Problem with QR-Code. Please contact the office.');
-    }
-
-}
-
-function check_login() {
-
-    if (partner_type == "DR_") {
-
-        // alert(id_no);
-
-        localStorage.setItem("id_no", id_no);
-
-        $.get("http://enunua.com/ubdream/db/driver/id_get_name.php?id_no=" + id_no + "", function (data) {
-
-            localStorage.setItem("driver_name", data);
-
-            responsiveVoice.speak("Please enter your PIN!", "UK English Male");
-
-            setTimeout(function () {
-                check_login_prompt();
-            }, 3000);
-
-            function check_login_prompt() {
-
-                // var pin_length = pin.length;
-				
-				// lang checker
-var language = localStorage.getItem("language");
-if (language == "lang_french") {
-	login_from_qr_pin_text = "S'il vous plaît entrer votre code PIN:"
-}
-if (language == "lang_english") {
-	login_from_qr_pin_text = "Please enter your PIN:"
-}		
-
-                var login_from_qr_pin = prompt("Bienvenue, " + data + ".\n"+login_from_qr_pin_text+"", "");
-                pin = login_from_qr_pin;
-
-                if (login_from_qr_pin === "") {
-                    alert(login_from_qr_pin_text);
-                    check_login();
-                } else if (login_from_qr_pin) {
-
-                    // alert(pin);
-
-                    $.get("http://enunua.com/ubdream/db/driver/id_check_pin.php?id_no=" + id_no + "&pin=" + pin + "", function (data) {
-
-                        // alert(data);
-
-                        if (data == "pin_correct") {
-
-                            responsiveVoice.speak("PIN Correct!", "UK English Male");
-
-                            $.get("http://enunua.com/db/driver/ubdream/id_get_driverid.php?id_no=" + id_no + "", function (driverid) {
-                                localStorage.setItem("driverid", driverid);
-                                localStorage.setItem("loggedin", "Yes");
-                            });
-
-                            var driver_name = localStorage.getItem("driver_name");
-                            document.getElementById("driver_name").innerHTML = driver_name;
-
-                            $("#view_login").fadeOut("slow", function () {
-                                $("#view_taxi_waiting").fadeIn("slow", function () {
-                                    myVar = setInterval(function () {
-                                        myTimer()
-                                    }, 10000);
-                                });
-                            });
-
-                        }
-                        if (data == "pin_false") {
-
-                            responsiveVoice.speak("Sorry,  PIN incorrect.", "UK English Male");
-
-                            setTimeout(function () {
-                                pin_incorrect_info();
-                            }, 3000);
-
-                            function pin_incorrect_info() {
-                                alert("PIN incorrect.");
-                                check_login();
-                            }
-                        }
-                    });
-                } else {
-					document.getElementById("login_btn_go").className = "waves-effect waves-light btn taxi250";
-	document.getElementById("login_btn_go").style.pointerEvents = "all";
-                    return;
-                }
-            }
-        });
-    } else {
-        alert('Account type not supported yet.');
-		
-		document.getElementById("login_btn_go").className = "waves-effect waves-light btn taxi250";
-	document.getElementById("login_btn_go").style.pointerEvents = "all";
-    }
-
-}
 
 function wasloggedin() {
+    
     document.getElementById('view_start').style.display = 'none';
-    document.getElementById('view_taxi_waiting').style.display = 'block';
+    document.getElementById('view_standby').style.display = 'block';
+    
+    update_start();
+    
     myVar = setInterval(function () {
         myTimer();
-        console.log("Start myTimer");
-    }, 10000);
+    }, 5000);
+}
+
+
+
+
+
+
+function myTimer() {
+update();
+}
+
+
+
+
+
+function native_navigation(street) {
+    
+launchnavigator.navigate(""+street+", Goma");
+    
+}
+
+
+
+
+function logout() {
+    localStorage.clear();
+    location.reload();
+}
+
+
+
+
+
+
+
+
+function make_call(number) {
+    location.href = "tel:+"+number+"";
 }
