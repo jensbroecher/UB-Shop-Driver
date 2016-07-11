@@ -232,7 +232,14 @@ update();
 
 function native_navigation(street) {
     
-launchnavigator.navigate(""+street+", Goma");
+launchnavigator.navigate(""+street+", Goma, DRC",
+  null,
+  function(){
+      console.log("launchnavigator Plugin success");
+  },
+  function(error){
+      console.log("Plugin error: "+ error);
+  });
     
 }
 
