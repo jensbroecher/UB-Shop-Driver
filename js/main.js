@@ -173,7 +173,6 @@ function scancode() {
 
                 // alert(result.text);
 
-                namefound();
             }
 
         }
