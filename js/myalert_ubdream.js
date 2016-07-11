@@ -33,7 +33,7 @@ function alert(message) {
 	
 			console.log("Message length: " + message_length);
 			
-			myalert_inner.style.height = "200px";
+			myalert_inner.style.height = "220px";
 			
 			
 			myalert_inner.style.width = "80%";
@@ -43,10 +43,10 @@ function alert(message) {
 			myalert_inner.style.backgroundColor = "#F8F8F8";
 			myalert_inner.style.textAlign = "center";
 			myalert_inner.style.fontFamily = "sans-serif";
-			myalert_inner.style.fontSize = "100%";
+			myalert_inner.style.fontSize = "120%";
 			myalert_inner.style.paddingTop = "20px";
 			
-			myalert_inner.style.borderRadius = "20px";
+			myalert_inner.style.borderRadius = "";
 
 			
 			message = "<div id='myalert_inner_button'></div><div style='padding:5px;'>"+message+"</div>";
