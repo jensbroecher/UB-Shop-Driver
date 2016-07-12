@@ -188,7 +188,8 @@ function scancode() {
 function confirm_delivery_after_scan() {
 
     var codefromqr = localStorage.getItem("codefromqr");
-    var codefromqr = atob(codefromqr);
+    
+    var codefromqr = Tea.decrypt(codefromqr, "ubx");
 
     $.get("https://enunua.com/ubdream/db/driver/scanqr.php?&task=confirm_code&qr=" + codefromqr + "", function (data) {
 
