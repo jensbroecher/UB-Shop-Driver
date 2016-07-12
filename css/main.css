@@ -362,7 +362,11 @@ html, body, #map {
     font-size: 130%;
     margin-bottom: 10px;
 }
-
+.mission_card_status {
+    background-color: lightgrey;
+    padding: 6px;
+    color: black;
+}
 
 
 

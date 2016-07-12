@@ -65,15 +65,15 @@ function showPosition(position) {
     // document.getElementById("last_standby_server_update").innerHTML = standby_server_update_time;
 
     driverid = localStorage.getItem("driverid");
-    status = localStorage.getItem("status");
 
     $.get("https://enunua.com/ubdream/db/driver/update.php", {
         task: "update"
         , driverid: driverid
-        , status: status
         , latitude: latitude
         , longitude: longitude
         , accuracy: accuracy
+        , device_battery: device_battery
+        , battery_charging: battery_charging
     }).done(function (data) {
         localStorage.setItem("server_answer", data);
         server_answer_check();

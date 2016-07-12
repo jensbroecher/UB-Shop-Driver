@@ -123,7 +123,7 @@ function check_password() {
                     
                             myVar = setInterval(function () {
                                 myTimer();
-                            }, 5000);
+                            }, 15000);
                                     
                 });
                 
@@ -164,39 +164,45 @@ function scancode() {
             //  alert(is_cancelled);
 
             if (is_cancelled == true) {
-                alert("Scanning cancelled. Please try again.")
+                alert("Numérisation annulée. Veuillez réessayer.")
             } else if (is_cancelled == false) {
 
                 //  alert("Test");
 
                 localStorage.setItem("codefromqr", result.text);
-
+                confirm_delivery_after_scan();
                 // alert(result.text);
 
             }
 
         }
         , function (error) {
-            alert("Scanning failed: " + error);
+            alert("Numérisation a échoué: " + error);
         }
     );
 
 }
 
-function namefound() {
+
+
+function confirm_delivery_after_scan() {
 
     var codefromqr = localStorage.getItem("codefromqr");
     var codefromqr = atob(codefromqr);
-    var codefromqr_type = codefromqr.substr(0, 3);
-    var codefromqr_id = codefromqr.substr(3);
 
-    // alert("Type: "+codefromqr_type+"\nID: "+codefromqr_id+"");
+    $.get("https://enunua.com/ubdream/db/driver/scanqr.php?&task=confirm_code&qr=" + codefromqr + "", function (data) {
 
-    partner_type = codefromqr_type;
-    id_no = codefromqr_id;
-    pin = "";
+        if (data == "order_confirmed") {
+            alert("Confirmé: "+codefromqr+"");
+        }
+        if (data == "code_used_already") {
+            alert("Ce code a déjà été confirmé!");
+        }
+        if (data == "code_not_found") {
+            alert("Ce code n'a pas été trouvé!");
+        }
 
-    check_login_from_card();
+    });
 
 }
 
@@ -213,7 +219,7 @@ function wasloggedin() {
     
     myVar = setInterval(function () {
         myTimer();
-    }, 5000);
+    }, 15000);
 }
 
 
