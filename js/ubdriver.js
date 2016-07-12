@@ -2,6 +2,24 @@ function update_start() {
     // Get missions - repeated if flag set in drivers account
     driverid = localStorage.getItem("driverid");
 
+    // Battery
+
+    var battery = navigator.battery;
+
+    navigator.getBattery().then(function (battery) {
+        device_battery = (battery.level * 100);
+        localStorage.setItem('device_battery', device_battery);
+
+        if (battery.charging === true) {
+            battery_charging = 'Charging';
+        } else if (battery.charging === false) {
+            battery_charging = 'Discharging';
+        }
+
+    });
+
+
+
     $.get("https://enunua.com/ubdream/db/driver/update.php", {
         task: "get_missions"
         , driverid: driverid
@@ -30,11 +48,15 @@ function showPosition(position) {
     longitude = position.coords.longitude;
     accuracy = position.coords.accuracy;
 
+
+
     console.log("Location:");
     console.log("----------");
     console.log(latitude);
     console.log(longitude);
     console.log('Accuracy: ' + position.coords.accuracy + 'm');
+    console.log('Battery: ' + device_battery + '%');
+    console.log('Battery charging?: ' + battery_charging);
     console.log("----------");
 
     // document.getElementById("accuracy_standby_meters").innerHTML = accuracy;

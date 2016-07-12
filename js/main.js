@@ -229,9 +229,9 @@ update();
 
 
 
-function native_navigation(street) {
+function native_navigation(lat,lng) {
     
-launchnavigator.navigate(""+street+", Goma, DRC",
+launchnavigator.navigate(""+lat+", "+lng+"",
   null,
   function(){
       console.log("launchnavigator Plugin success");
