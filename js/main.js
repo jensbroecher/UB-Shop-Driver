@@ -192,6 +192,8 @@ function confirm_delivery_after_scan() {
     var codefromqr = Tea.decrypt(codefromqr, "ubx");
 
     $.get("https://enunua.com/ubdream/db/driver/scanqr.php?&task=confirm_code&qr=" + codefromqr + "", function (data) {
+        
+        confirm(data);
 
         if (data == "order_confirmed") {
             alert("Confirmé: "+codefromqr+"");
