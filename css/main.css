@@ -336,6 +336,17 @@ html, body, #map {
     right: 0px;
     top: 0px;
 }
+#view_standby_actionbar #back_button {
+    background-image: url(../img/arrow-left.svg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: fixed;
+    width: 48px;
+    height: 48px;
+    left: 0px;
+    top: 0px;
+    display: none;
+}
 #view_standby_actionbar #drivername {
     line-height: 48px;
     font-size: 16px;
@@ -348,7 +359,7 @@ html, body, #map {
     padding-top: 70px;
 }
 
-#missions .mission_card {
+.mission_card {
     width: 90%;
     padding: 2%;
     margin-left: auto;
@@ -357,7 +368,7 @@ html, body, #map {
     box-shadow: 0 0 7px 0 rgba(0,0,0,0.6);
     background-color: white;
 }
-#missions .mission_card_header {
+.mission_card_header {
     font-weight: bold;
     font-size: 130%;
     margin-bottom: 10px;
@@ -366,6 +377,16 @@ html, body, #map {
     background-color: lightgrey;
     padding: 6px;
     color: black;
+    clear: both;
+}
+.m_d {
+    font-weight: bold;
+    display: block;
+    width: 200px;
+}
+.mission_left {
+    width: 50%;
+    float: left;
 }
 
 

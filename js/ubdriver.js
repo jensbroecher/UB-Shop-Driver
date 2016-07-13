@@ -121,3 +121,48 @@ function server_answer_check() {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+function start_delivery(orderid) {
+    
+    driverid = localStorage.getItem("driverid");
+    
+    document.getElementById("start_btn_"+orderid+"").style.display = "none";
+    
+     $.get("https://enunua.com/ubdream/db/driver/update.php", {
+        task: "status_start_delivery"
+        , driverid: orderid
+        , driverid: driverid
+    }).done(function (data) {
+
+    document.getElementById("cancel_btn_"+orderid+"").style.display = "block";   
+
+    });
+}
+
+
+function articles(orderid) {
+$.get("https://enunua.com/ubdream/db/driver/update.php", {
+        task: "get_articles"
+        , orderid: orderid
+    }).done(function (data) {
+
+        document.getElementById("drivername").innerHTML = "Articles commandés";
+        document.getElementById("view_standby_content").innerHTML = data;
+        document.getElementById("back_button").style.display = "block";
+
+    });
+}
+
+function go_back() {
+    document.getElementById("back_button").style.display = "none";
+    update_start();
+}
