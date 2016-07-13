@@ -203,6 +203,7 @@ function confirm_delivery_after_scan() {
         }
         if (data == "code_not_found") {
             alert("Ce code n'a pas été trouvé!");
+            
         }
 
     });
