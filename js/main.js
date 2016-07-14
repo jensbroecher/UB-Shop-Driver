@@ -195,11 +195,11 @@ function confirm_delivery_after_scan() {
 
         if (data == "order_confirmed") {
             alert("Confirmé: "+codefromqr+"");
-            update_start();
+            do_start();
         }
         if (data == "code_used_already") {
             alert("Ce code a déjà été confirmé!");
-            update_start();
+            do_start();
         }
         if (data == "code_not_found") {
             alert("Ce code n'a pas été trouvé!");

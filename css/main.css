@@ -1,6 +1,7 @@
 body {
     background-color: gainsboro;
     text-align: center;
+    overflow-x: hidden;
 }
 #select_language {
     position: absolute;
@@ -374,10 +375,11 @@ html, body, #map {
     margin-bottom: 10px;
 }
 .mission_card_status {
-    background-color: lightgrey;
+    background-color: lightslategrey;
     padding: 6px;
-    color: black;
+    color: white;
     clear: both;
+    text-align: center;
 }
 .m_d {
     font-weight: bold;

@@ -1,4 +1,24 @@
+function do_start() {
+    
+    location.href = "#main";
+    
+    document.getElementById("back_button").style.display = "none";
+        
+        $.get("https://enunua.com/ubdream/db/driver/update.php", {
+        task: "get_missions"
+        , driverid: driverid
+        }).done(function (data) {
+
+        document.getElementById("view_standby_content").innerHTML = data;
+
+    });
+    
+}
+
 function update_start() {
+    
+    location.href = "#main";
+    
     // Get missions - repeated if flag set in drivers account
     driverid = localStorage.getItem("driverid");
 
@@ -18,17 +38,6 @@ function update_start() {
 
     });
 
-
-
-    $.get("https://enunua.com/ubdream/db/driver/update.php", {
-        task: "get_missions"
-        , driverid: driverid
-    }).done(function (data) {
-
-        document.getElementById("view_standby_content").innerHTML = data;
-
-    });
-
     drivername = localStorage.getItem("drivername");
     username = localStorage.getItem("username");
 
@@ -36,6 +45,10 @@ function update_start() {
 
     document.getElementById("drivername").innerHTML = drivername_action_bar;
 
+}
+
+function go_back() {
+    location.href = "#main";
 }
 
 function update() {
@@ -138,18 +151,22 @@ function start_delivery(orderid) {
     document.getElementById("start_btn_"+orderid+"").style.display = "none";
     
      $.get("https://enunua.com/ubdream/db/driver/update.php", {
-        task: "status_start_delivery"
-        , driverid: orderid
+        task: "start_delivery"
+        , orderid: orderid
         , driverid: driverid
     }).done(function (data) {
 
-    document.getElementById("cancel_btn_"+orderid+"").style.display = "block";   
+    document.getElementById("cancel_btn_"+orderid+"").style.display = "block";
+    document.getElementById("mission_card_status_"+orderid+"").innerHTML = "La livraison a commencé. Conduire au client.";  
 
     });
 }
 
 
 function articles(orderid) {
+    
+location.href = "#articles";
+    
 $.get("https://enunua.com/ubdream/db/driver/update.php", {
         task: "get_articles"
         , orderid: orderid
@@ -162,7 +179,19 @@ $.get("https://enunua.com/ubdream/db/driver/update.php", {
     });
 }
 
-function go_back() {
-    document.getElementById("back_button").style.display = "none";
-    update_start();
+function status(orderid) {
+    
+$.get("https://enunua.com/ubdream/db/driver/update.php", {
+        task: "check_if_started"
+        , orderid: orderid
+    }).done(function (data) {
+
+    if (data == "new") {
+        alert("Impossible de définir le statut. Livraison n'a pas encore commencé.");
+        return;
+    }
+
+    });
 }
+
+
