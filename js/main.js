@@ -266,7 +266,6 @@ function logout() {
 
 
 
-
 function make_call(number) {
     location.href = "tel:+"+number+"";
 }
