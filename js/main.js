@@ -185,25 +185,27 @@ function scancode() {
 
 
 
-function confirm_delivery_after_scan() {
+function confirm_delivery_after_scan(orderid) {
 
     var codefromqr = localStorage.getItem("codefromqr");
     
     var codefromqr = Tea.decrypt(codefromqr, "ubx");
 
-    $.get("https://enunua.com/ubdream/db/driver/scanqr.php?&task=confirm_code&qr=" + codefromqr + "", function (data) {
+    $.get("https://enunua.com/ubdream/db/driver/scanqr.php?&task=confirm_code&orderid=" + orderid + "&qr=" + codefromqr + "", function (data) {
 
         if (data == "order_confirmed") {
             alert("Confirmé: "+codefromqr+"");
+            sweetAlert("Confirmé: "+codefromqr+"", "", "success");
             do_start();
         }
         if (data == "code_used_already") {
-            alert("Ce code a déjà été confirmé!");
-            do_start();
+            sweetAlert("Ce code a déjà été confirmé!", "S'il vous plaît essayer à nouveau!", "error");
+        }
+        if (data == "code_no_match") {
+            sweetAlert("Le code est correct, mais appartient à un ordre différent!", "S'il vous plaît essayer à nouveau!", "error");
         }
         if (data == "code_not_found") {
-            alert("Ce code n'a pas été trouvé!");
-            
+            sweetAlert("Ce code n'a pas été trouvé!", "S'il vous plaît essayer à nouveau!", "error");
         }
 
     });
