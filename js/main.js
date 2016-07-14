@@ -150,7 +150,7 @@ function check_password() {
 
 
 
-function scancode() {
+function scancode(orderid) {
 
     cordova.plugins.barcodeScanner.scan(
         function (result) {
@@ -170,7 +170,7 @@ function scancode() {
                 //  alert("Test");
 
                 localStorage.setItem("codefromqr", result.text);
-                confirm_delivery_after_scan();
+                confirm_delivery_after_scan(orderid);
                 // alert(result.text);
 
             }
