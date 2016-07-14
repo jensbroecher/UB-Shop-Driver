@@ -194,7 +194,6 @@ function confirm_delivery_after_scan(orderid) {
     $.get("https://enunua.com/ubdream/db/driver/scanqr.php?&task=confirm_code&orderid=" + orderid + "&qr=" + codefromqr + "", function (data) {
 
         if (data == "order_confirmed") {
-            alert("Confirmé: "+codefromqr+"");
             sweetAlert("Confirmé: "+codefromqr+"", "", "success");
             do_start();
         }
