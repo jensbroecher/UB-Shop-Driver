@@ -39,6 +39,8 @@
     <gap:plugin name="cordova-plugin-fastrde-checkgps" source="npm" />
     <gap:plugin name="cordova-plugin-barcodescanner" source="npm" />
         
+    <gap:plugin name="cordova-plugin-actionsheet" source="npm" />
+        
     <gap:plugin name="uk.co.workingedge.phonegap.plugin.launchnavigator" source="npm" />
         
     <gap:plugin name="onesignal-cordova-plugin-pgb-compat" source="npm" />
