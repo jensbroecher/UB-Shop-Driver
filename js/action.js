@@ -26,7 +26,7 @@ function cancel_sheet(orderid) {
     var options = {
         'androidTheme': window.plugins.actionsheet.ANDROID_THEMES.THEME_HOLO_LIGHT, // default is THEME_TRADITIONAL 
         'title': 'Pourquoi voulez-vous annuler?'
-        , 'buttonLabels': ['Vous ne trouvez pas le fournisseur', 'Vous ne trouvez pas client']
+        , 'buttonLabels': ['Vous ne trouvez pas le fournisseur', 'Vous ne trouvez pas client', 'Le client refuse les produits']
         , 'androidEnableCancelButton': true, // default false 
         'addCancelButtonWithLabel': 'Annuler'
         , // 'addDestructiveButtonWithLabel' : 'Delete it'
