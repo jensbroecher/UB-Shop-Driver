@@ -5,8 +5,10 @@ var callback = function (buttonIndex) {
         driverid = localStorage.getItem("driverid");
 
         sheet_type = localStorage.getItem("sheet_type");
+        
+        sheet_orderid = localStorage.getItem("sheet_orderid");
 
-        $.get("https://enunua.com/ubdream/db/driver/update.php?task=sheet_action&sheet_type=" + sheet_type + "&driverid=" + driverid + "&action=" + buttonIndex + "", function (data) {
+        $.get("https://enunua.com/ubdream/db/driver/update.php?task=sheet_action&sheet_type=" + sheet_type + "&driverid=" + driverid + "&sheet_orderid=" + sheet_orderid + "&action=" + buttonIndex + "", function (data) {
 
         });
 
@@ -15,8 +17,10 @@ var callback = function (buttonIndex) {
     });
 };
 
-function cancel_sheet() {
+function cancel_sheet(orderid) {
 
+    localStorage.setItem("sheet_orderid", orderid);
+    
     localStorage.setItem("sheet_type", "cancel");
 
     var options = {
