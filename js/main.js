@@ -117,7 +117,7 @@ function check_password() {
             $("#view_login").fadeOut("slow", function () {
                 
                     $("#view_standby").fadeIn("slow", function () {
-                        
+                            
                             update_start();
                             update();
                     
@@ -257,6 +257,7 @@ launchnavigator.navigate(""+lat+", "+lng+"",
 
 
 function logout() {
+    location.href = "#start";
     localStorage.clear();
     location.reload();
 }

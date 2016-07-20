@@ -3,6 +3,8 @@ function do_start() {
     location.href = "#main";
     
     document.getElementById("back_button").style.display = "none";
+    
+    driverid = localStorage.getItem("driverid");
         
         $.get("https://enunua.com/ubdream/db/driver/update.php", {
         task: "get_missions"

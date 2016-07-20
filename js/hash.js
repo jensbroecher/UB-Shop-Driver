@@ -20,6 +20,10 @@ function processHash(hash) {
         
         document.getElementById("back_button").style.display = "none";
         
+        driverid = localStorage.getItem("driverid");
+        
+        console.log("hash");
+        
         $.get("https://enunua.com/ubdream/db/driver/update.php", {
         task: "get_missions"
         , driverid: driverid

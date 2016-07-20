@@ -13,6 +13,15 @@ body {
     z-index: 100;
     display: none;
 }
+#view_standby_gps {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    bottom: 0;
+    line-height: 50px;
+    background-color: black;
+    display: none;
+}
 #language_flag {
     border-radius: 10px;
     border: solid 2px white;
