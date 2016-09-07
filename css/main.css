@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Material Icons'), local('MaterialIcons-Regular'), url(../font/material/MaterialIcons-Regular.woff2) format('woff2'), url(../font/material/MaterialIcons-Regular.woff) format('woff'), url(../font/material/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
 body {
     background-color: gainsboro;
     text-align: center;
